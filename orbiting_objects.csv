@@ -1,0 +1,202 @@
+Entity,Code,Year,Number of tracked objects in lower Earth orbit
+Debris,,1958,1
+Debris,,1959,5
+Debris,,1960,16
+Debris,,1961,293
+Debris,,1962,309
+Debris,,1963,423
+Debris,,1964,500
+Debris,,1965,1168
+Debris,,1966,1349
+Debris,,1967,1409
+Debris,,1968,1686
+Debris,,1969,1929
+Debris,,1970,2491
+Debris,,1971,2650
+Debris,,1972,2906
+Debris,,1973,3133
+Debris,,1974,3377
+Debris,,1975,3939
+Debris,,1976,4362
+Debris,,1977,4576
+Debris,,1978,4712
+Debris,,1979,4832
+Debris,,1980,4809
+Debris,,1981,5195
+Debris,,1982,7060
+Debris,,1983,7290
+Debris,,1984,7333
+Debris,,1985,7491
+Debris,,1986,8089
+Debris,,1987,8488
+Debris,,1988,8360
+Debris,,1989,8244
+Debris,,1990,8260
+Debris,,1991,8516
+Debris,,1992,8822
+Debris,,1993,10684
+Debris,,1994,11629
+Debris,,1995,11874
+Debris,,1996,11773
+Debris,,1997,12207
+Debris,,1998,12137
+Debris,,1999,15878
+Debris,,2000,16127
+Debris,,2001,16263
+Debris,,2002,16089
+Debris,,2003,15933
+Debris,,2004,15887
+Debris,,2005,15815
+Debris,,2006,16610
+Debris,,2007,16612
+Debris,,2008,16169
+Debris,,2009,16113
+Debris,,2010,16019
+Debris,,2011,16056
+Debris,,2012,15921
+Debris,,2013,15696
+Debris,,2014,15326
+Debris,,2015,15040
+Debris,,2016,14948
+Debris,,2017,14896
+Debris,,2018,15005
+Debris,,2019,15047
+Debris,,2020,14919
+Debris,,2021,14729
+Debris,,2022,13722
+Debris,,2023,12609
+Debris,,2024,12458
+Payloads,,1958,1
+Payloads,,1959,4
+Payloads,,1960,10
+Payloads,,1961,16
+Payloads,,1962,26
+Payloads,,1963,40
+Payloads,,1964,68
+Payloads,,1965,128
+Payloads,,1966,153
+Payloads,,1967,185
+Payloads,,1968,211
+Payloads,,1969,240
+Payloads,,1970,280
+Payloads,,1971,350
+Payloads,,1972,405
+Payloads,,1973,461
+Payloads,,1974,514
+Payloads,,1975,585
+Payloads,,1976,665
+Payloads,,1977,716
+Payloads,,1978,768
+Payloads,,1979,786
+Payloads,,1980,805
+Payloads,,1981,862
+Payloads,,1982,903
+Payloads,,1983,957
+Payloads,,1984,1017
+Payloads,,1985,1078
+Payloads,,1986,1146
+Payloads,,1987,1207
+Payloads,,1988,1238
+Payloads,,1989,1252
+Payloads,,1990,1310
+Payloads,,1991,1346
+Payloads,,1992,1373
+Payloads,,1993,1409
+Payloads,,1994,1451
+Payloads,,1995,1470
+Payloads,,1996,1498
+Payloads,,1997,1576
+Payloads,,1998,2025
+Payloads,,1999,2082
+Payloads,,2000,2113
+Payloads,,2001,2115
+Payloads,,2002,2135
+Payloads,,2003,2160
+Payloads,,2004,2181
+Payloads,,2005,2196
+Payloads,,2006,2228
+Payloads,,2007,2269
+Payloads,,2008,2309
+Payloads,,2009,2365
+Payloads,,2010,2399
+Payloads,,2011,2435
+Payloads,,2012,2477
+Payloads,,2013,2605
+Payloads,,2014,2653
+Payloads,,2015,2685
+Payloads,,2016,2740
+Payloads,,2017,3013
+Payloads,,2018,3209
+Payloads,,2019,3493
+Payloads,,2020,4567
+Payloads,,2021,6087
+Payloads,,2022,7939
+Payloads,,2023,9931
+Payloads,,2024,11399
+Rocket bodies,,1958,1
+Rocket bodies,,1959,3
+Rocket bodies,,1960,9
+Rocket bodies,,1961,13
+Rocket bodies,,1962,23
+Rocket bodies,,1963,34
+Rocket bodies,,1964,51
+Rocket bodies,,1965,81
+Rocket bodies,,1966,103
+Rocket bodies,,1967,129
+Rocket bodies,,1968,151
+Rocket bodies,,1969,172
+Rocket bodies,,1970,201
+Rocket bodies,,1971,243
+Rocket bodies,,1972,277
+Rocket bodies,,1973,308
+Rocket bodies,,1974,348
+Rocket bodies,,1975,405
+Rocket bodies,,1976,469
+Rocket bodies,,1977,513
+Rocket bodies,,1978,543
+Rocket bodies,,1979,554
+Rocket bodies,,1980,564
+Rocket bodies,,1981,603
+Rocket bodies,,1982,624
+Rocket bodies,,1983,681
+Rocket bodies,,1984,737
+Rocket bodies,,1985,803
+Rocket bodies,,1986,840
+Rocket bodies,,1987,876
+Rocket bodies,,1988,908
+Rocket bodies,,1989,937
+Rocket bodies,,1990,981
+Rocket bodies,,1991,1006
+Rocket bodies,,1992,1048
+Rocket bodies,,1993,1092
+Rocket bodies,,1994,1133
+Rocket bodies,,1995,1160
+Rocket bodies,,1996,1188
+Rocket bodies,,1997,1227
+Rocket bodies,,1998,1237
+Rocket bodies,,1999,1241
+Rocket bodies,,2000,1235
+Rocket bodies,,2001,1212
+Rocket bodies,,2002,1202
+Rocket bodies,,2003,1214
+Rocket bodies,,2004,1219
+Rocket bodies,,2005,1222
+Rocket bodies,,2006,1239
+Rocket bodies,,2007,1263
+Rocket bodies,,2008,1282
+Rocket bodies,,2009,1294
+Rocket bodies,,2010,1318
+Rocket bodies,,2011,1329
+Rocket bodies,,2012,1342
+Rocket bodies,,2013,1348
+Rocket bodies,,2014,1352
+Rocket bodies,,2015,1372
+Rocket bodies,,2016,1393
+Rocket bodies,,2017,1417
+Rocket bodies,,2018,1461
+Rocket bodies,,2019,1479
+Rocket bodies,,2020,1491
+Rocket bodies,,2021,1518
+Rocket bodies,,2022,1550
+Rocket bodies,,2023,1556
+Rocket bodies,,2024,1551
