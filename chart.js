@@ -1,3 +1,5 @@
+function drawChart() {
+
 const data = [
     { Year: 1957, Count: 3 },
     { Year: 1958, Count: 28 },
@@ -67,14 +69,17 @@ const data = [
     { Year: 2022, Count: 186},
     { Year: 2023, Count: 223},
     { Year: 2024, Count: 263},
-  ];
-  
+];
+    
   const margin = { top: 40, right: 60, bottom: 60, left: 80 },
   width  = 1000 - margin.left - margin.right,
   height = 400  - margin.top  - margin.bottom;
 
 const outerWidth  = width  + margin.left + margin.right;
 const outerHeight = height + margin.top  + margin.bottom;
+
+// Clear any existing SVG
+d3.select("#chart").selectAll("*").remove();
 
 const svg = d3.select("#chart")
 .append("svg")
@@ -83,85 +88,107 @@ const svg = d3.select("#chart")
 .append("g")
 .attr("transform", `translate(${margin.left},${margin.top})`);
 
-// 1) Scales
-const x = d3.scaleLinear()
-.domain(d3.extent(data, d => d.Year))
-.range([0, width]);
+// Scales, axes, labels, grid … exactly as you have them
+const x = d3.scaleLinear().domain(d3.extent(data, d=>d.Year)).range([0,width]);
+const y = d3.scaleLinear().domain([0, d3.max(data, d=>d.Count)]).nice().range([height,0]);
 
-const y = d3.scaleLinear()
-.domain([0, d3.max(data, d => d.Count)])
-.nice()
-.range([height, 0]);
-
-// 2) X axis
 svg.append("g")
 .attr("transform", `translate(0,${height})`)
 .call(d3.axisBottom(x).tickFormat(d3.format("d")));
-
-// — X‑axis label
-svg.append("text")
-.attr("class", "x axis-label")
-.attr("text-anchor", "middle")
-.attr("x", width / 2)
-.attr("y", height + margin.bottom - 10)
-.style("font-size", ".8rem")
-.attr("fill", "orange")
-.text("Year");
-
-// 3) Y axis
+svg.append("text")  /* X‑axis label */ /* … */;
+svg.append("g").call(d3.axisLeft(y));
+svg.append("text")  /* Y‑axis label */ /* … */;
+svg.append("text")  /* Title */          /* … */;
 svg.append("g")
-.call(d3.axisLeft(y));
+.call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
+.selectAll("line").attr("stroke", "#eeeeee");
 
-// — Y‑axis label
+     // 1) X axis
+  svg.append("g")
+  .attr("transform", `translate(0,${height})`)
+  .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+
+// 1a) X‑axis label
 svg.append("text")
-.attr("class", "y axis-label")
-.attr("text-anchor", "middle")
-.attr("transform", "rotate(-90)")
-.attr("x", -height / 2)
-.attr("y", -margin.left + 30)
-.style("font-size", ".8rem")
-.attr("fill", "orange")
-.text("Number of Launch Attempts");
+  .attr("class", "axis-label")
+  .attr("text-anchor", "middle")
+  .attr("x", width/2)
+  .attr("y", height + margin.bottom - 10)
+  .attr("fill", "orange")
+  .style("font-size", ".8rem")
+  .text("Year");
 
-// 4) Chart title (in top margin)
-svg.append("text")
-.attr("class", "chart-title")
-//.attr("x", width / 2)
-.attr("y", -margin.top / 2)
-.attr("text-anchor", "start")
-.style("font-size", "1.1rem")
-.attr("fill", "orange")    
-.text("Annual Space Launches: 1957–2024");
-
-// 5) Grid lines
+// 2) Y axis
 svg.append("g")
-.call(d3.axisLeft(y)
-.tickSize(-width)
-.tickFormat("")
-)
-.selectAll("line")
-.attr("stroke", "#eeeeee");
+  .call(d3.axisLeft(y));
 
-// 6) Line generator + animation
-const line = d3.line()
-.x(d => x(d.Year))
-.y(d => y(d.Count));
+// 2a) Y‑axis label
+svg.append("text")
+  .attr("class", "axis-label")
+  .attr("text-anchor", "middle")
+  .attr("transform", "rotate(-90)")
+  .attr("x", -height/2)
+  .attr("y", -margin.left + 30)
+  .attr("fill", "orange")
+  .style("font-size", ".8rem")
+  .text("Number of Launch Attempts");
 
+// 3) Chart title
+svg.append("text")
+  .attr("class", "chart-title")
+  .attr("y", -margin.top/2)
+  .attr("text-anchor", "start")
+  .attr("fill", "orange")
+  .style("font-size", "1.1rem")
+  .text("Annual Space Launches: 1957–2024");
+    
+
+const line = d3.line().x(d=>x(d.Year)).y(d=>y(d.Count));
 const path = svg.append("path")
 .datum(data)
 .attr("fill", "none")
 .attr("stroke", "red")
 .attr("stroke-width", 3)
-.attr("stroke-linecap", "round")    // ← round the ends
-.attr("stroke-linejoin", "round")   // ← round the corners
+.attr("stroke-linecap", "round")
+.attr("stroke-linejoin", "round")
 .attr("d", line);
 
+// put into hidden dash‑offset state
 const totalLength = path.node().getTotalLength();
-
 path
 .attr("stroke-dasharray", `${totalLength} ${totalLength}`)
-.attr("stroke-dashoffset", totalLength)
-.transition()
+.attr("stroke-dashoffset", totalLength);
+
+// return the path selection & length so we can animate it later
+return { path, totalLength };
+}
+
+// 1) Animation routine, but not called immediately
+function animate(path, totalLength) {
+path.transition()
 .duration(4000)
 .ease(d3.easeLinear)
 .attr("stroke-dashoffset", 0);
+}
+
+// 2) Set up draw + observer
+document.addEventListener("DOMContentLoaded", () => {
+const { path, totalLength } = drawChart();
+
+const chartEl = document.querySelector("#chart");
+const observer = new IntersectionObserver((entries, obs) => {
+if (entries[0].isIntersecting) {
+animate(path, totalLength);
+obs.disconnect();         // only run once
+}
+}, { threshold: 0.9 });      // trigger when 20% visible
+
+observer.observe(chartEl);
+
+// optional: if you want to redraw on resize (and re‑observe)
+window.addEventListener("resize", () => {
+observer.disconnect();
+const result = drawChart();
+observer.observe(chartEl);
+});
+});

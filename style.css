@@ -55,8 +55,10 @@ p {
 
 .information h3 {
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 0px;
+    text-transform: capitalize;
     font-size: 2rem;
+    
 }
 
 .information p {
