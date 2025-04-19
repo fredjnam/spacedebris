@@ -63,3 +63,16 @@ p {
     margin-top: 0px;
     font-size: 1.7rem;
 }
+
+.information #chart {
+    width: 100%;
+    overflow: visible;
+}
+
+.information svg {
+  width: 100%;
+  height: auto;
+  max-width: 100vw;
+  display: block;
+}
+

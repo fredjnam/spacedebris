@@ -69,16 +69,19 @@ const data = [
     { Year: 2024, Count: 263},
   ];
   
-  const margin = { top: 20, right: 30, bottom: 40, left: 60 },
-        width = 800 - margin.left - margin.right,
+  const margin = { top: 30, right: 60, bottom: 60, left: 80 },
+        width = 1000 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
   
-  const svg = d3.select("#chart")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+        const outerWidth  = width + margin.left + margin.right;
+        const outerHeight = height + margin.top  + margin.bottom;
+        
+        const svg = d3.select("#chart")
+          .append("svg")
+            .attr("viewBox", `0 0 ${outerWidth} ${outerHeight}`)
+            .attr("preserveAspectRatio", "xMinYMin meet")
+          .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
   
   const x = d3.scaleLinear()
     .domain(d3.extent(data, d => d.Year))
