@@ -27,12 +27,37 @@
     <section class="information">
         <h3>but it does not come without consequence</h3>
         <p>space debris, also know as space junk, litters our orbit and it comes in many shapes and sizes. </p>
+        <div class="three-image-display">
+
+            <!-- Image One -->
+            <div class="image-block">
+                <h4>Old Satellites</h4>
+                <img src="./Images/Satellite Line Art.svg" alt="Satellite" height="300px">
+                <p>A satellite damaged by orbital debris or is out of comission.</p>
+            </div>
+
+            <!-- Image Two -->
+            <div class="image-block">
+                <h4>Rocket Bodies</h4>
+                <img src="./Images/Satellite Line Art.svg" alt="Satellite" height="300px">
+                <p>The rockets that propel payloads into space are often left behind.</p>
+            </div>
+
+            <!-- Image Three -->
+            <div class="image-block">
+                <h4>Fragmentation</h4>
+                <img src="./Images/Satellite Line Art.svg" alt="Satellite" height="300px">
+                <p>Parts of destroyed satellites that fly though orbit ranging from 1cm in diameter to many feet across</p>
+            </div>
+
+        </div>
     </section>
     
     <!-- Active Debris Orbit -->
     <section class="information">
         <h3>The amount in orbit is astonishing</h3>
         <p>There are XX,XXX amount of debris actively orbiting the earth. That X amount of debris for every 1 space launch.</p>
+        <div id="counter" style="font-size: 3rem; font-weight: bold;">0</div>
     </section>
 
     <!-- Speed -->
@@ -51,6 +76,9 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- external JS -->
     <script src="chart.js"></script>
+
+    <!-- Counter animation -->
+    <script src="counter.js" defer></script>
 
 </body>
 </html>
