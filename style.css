@@ -71,6 +71,7 @@ p {
 .information p {
     display: block;
     margin-top: 0px;
+    margin-bottom: 0px;
     font-size: 1.7rem;
     font-family: "lato";
 }
@@ -79,6 +80,13 @@ p {
     width: 100%;
     overflow: visible;
 }
+
+.information #chart2 {
+    width: 100%;
+    overflow: visible;
+}
+
+
 
 .three-image-display {
     display: flex;
@@ -122,5 +130,21 @@ p {
   }
 
   #counter {
-    
+    font-family: 'Lato', sans-serif;  /* pick your font */
+    font-size: 2rem;                  /* how big the text is */
+    font-weight: bold;                /* normal, bold, 300, 900, etc. */
+    color: orange;                    /* any CSS color you want */
+    /* optionally: text-shadow, letter-spacing, line-height… */
+    align-self: center;
   }
+
+  .axis-label { 
+    font-size: .8rem; 
+    fill: orange; 
+}
+
+.chart-title { font-size: 1.1rem;
+    fill: orange; 
+}
+/* optional: style grid lines */
+.grid line { stroke: #eeeeee; }
