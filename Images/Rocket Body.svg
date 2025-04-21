@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78.7 330.52">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: .5px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-width: .2px;
+      }
+    </style>
+  </defs>
+  <g id="Rocket_Body" data-name="Rocket Body">
+    <g>
+      <polyline class="cls-1" points="67.85 52.27 72.35 300.77 8.35 300.77 14.85 52.27"/>
+      <path class="cls-1" d="M67.85,52.27S69.85,12.27,40.85.27c0,0-26,10-26,52"/>
+      <polyline class="cls-1" points="35.18 301.1 26.06 330.27 52.37 330.27 44.85 301.6"/>
+      <polyline class="cls-1" points="9.02 301.1 .35 326.77 25.37 326.77 18.22 301.54"/>
+      <polyline class="cls-1" points="62.02 300.6 53.35 326.27 78.37 326.27 71.22 301.04"/>
+      <line class="cls-2" x1="27.15" y1="326.77" x2="51.32" y2="326.77"/>
+      <line class="cls-2" x1="26.68" y1="328.26" x2="52.02" y2="328.26"/>
+      <line class="cls-2" x1="2.05" y1="321.73" x2="23.64" y2="321.73"/>
+      <line class="cls-2" x1="1.54" y1="323.23" x2="24.37" y2="323.23"/>
+      <line class="cls-2" x1="55.35" y1="321.77" x2="77.09" y2="321.73"/>
+      <line class="cls-2" x1="54.37" y1="323.23" x2="77.09" y2="323.23"/>
+    </g>
+  </g>
+</svg>

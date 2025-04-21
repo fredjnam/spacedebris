@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138.58 322.28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: .2px;
+      }
+    </style>
+  </defs>
+  <g id="Fragmentation">
+    <g>
+      <polygon class="cls-1" points="40.3 .18 24.49 22.18 54.59 22.18 40.3 .18"/>
+      <circle class="cls-1" cx="15.59" cy="91.68" r="13"/>
+      <polygon class="cls-1" points="92.59 63.68 96.59 41.68 73.4 35.77 69.59 53.68 85.74 49.72 83.09 63.68 92.59 63.68"/>
+      <polygon class="cls-1" points="8.59 136.68 32.59 155.68 50.25 136.68 33.08 143.18 39.54 127.09 29.42 135.68 8.59 136.68"/>
+      <rect class="cls-1" x="72.59" y="104.68" width="22" height="22"/>
+      <path class="cls-1" d="M.11,186.47s8.28-16.79,24.38,2.21l-8.9,25.01L.11,186.47Z"/>
+      <circle class="cls-1" cx="76.09" cy="172.18" r="3.5"/>
+      <circle class="cls-1" cx="90.09" cy="172.18" r="3.5"/>
+      <circle class="cls-1" cx="86.59" cy="183.68" r="4"/>
+      <polygon class="cls-1" points="83.09 226.51 83.59 210.18 93.59 210.18 100.54 196.65 112.58 210.18 127.61 202.18 127.59 218.68 138.44 234.49 128.59 240.68 104.15 232.58 86.59 253.08 83.09 226.51"/>
+      <line class="cls-1" x1="29.42" y1="246.93" x2="12.3" y2="273.58"/>
+      <ellipse class="cls-1" cx="55.09" cy="284.18" rx="4.5" ry="19.5" transform="translate(-184.81 122.19) rotate(-45)"/>
+      <path class="cls-1" d="M83.09,296.51v-19.24h24.03v23.94s-24.53,14.14-24.03-4.69Z"/>
+      <polygon class="cls-1" points="12.3 296.51 2.84 306.29 2.84 322.18 24.49 322.18 24.49 306.29 12.3 296.51"/>
+    </g>
+  </g>
+</svg>
