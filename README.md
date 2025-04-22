@@ -1,6 +1,6 @@
 # spacedebris
 
-To run the code, open the folder in terminal in the spacedebris folder!
+To open the HTML file, open the folder in terminal in the spacedebris folder!
 
 Then, run the code below in the terminal.
 
