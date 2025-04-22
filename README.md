@@ -2,7 +2,7 @@
 
 To run the code, open the folder in terminal in the spacedebris folder!
 
-Then, run this code below
+Then, run the code below in the terminal.
 
 python -m http.server 8000
 
