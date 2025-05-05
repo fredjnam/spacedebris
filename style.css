@@ -148,3 +148,7 @@ p {
 }
 /* optional: style grid lines */
 .grid line { stroke: #eeeeee; }
+
+#tableauViz {
+    width: 100%;
+}
