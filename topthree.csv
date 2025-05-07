@@ -1,0 +1,185 @@
+Entity,Code,Year,Annual number of objects launched into outer space
+China,CHN,1970,1
+China,CHN,1971,1
+China,CHN,1974,1
+China,CHN,1975,3
+China,CHN,1976,2
+China,CHN,1978,1
+China,CHN,1981,3
+China,CHN,1982,1
+China,CHN,1983,1
+China,CHN,1984,3
+China,CHN,1985,1
+China,CHN,1986,2
+China,CHN,1987,2
+China,CHN,1988,4
+China,CHN,1990,6
+China,CHN,1991,1
+China,CHN,1992,2
+China,CHN,1993,1
+China,CHN,1994,5
+China,CHN,1995,1
+China,CHN,1996,3
+China,CHN,1997,7
+China,CHN,1998,10
+China,CHN,1999,10
+China,CHN,2000,6
+China,CHN,2001,2
+China,CHN,2002,7
+China,CHN,2003,9
+China,CHN,2004,10
+China,CHN,2005,7
+China,CHN,2006,8
+China,CHN,2007,10
+China,CHN,2008,17
+China,CHN,2009,8
+China,CHN,2010,20
+China,CHN,2011,20
+China,CHN,2012,26
+China,CHN,2013,19
+China,CHN,2014,25
+China,CHN,2015,38
+China,CHN,2016,38
+China,CHN,2017,31
+China,CHN,2018,95
+China,CHN,2019,76
+China,CHN,2020,73
+China,CHN,2021,110
+China,CHN,2022,182
+China,CHN,2023,210
+China,CHN,2024,266
+Russia,RUS,1957,2
+Russia,RUS,1958,1
+Russia,RUS,1959,3
+Russia,RUS,1960,3
+Russia,RUS,1961,7
+Russia,RUS,1962,20
+Russia,RUS,1963,17
+Russia,RUS,1964,35
+Russia,RUS,1965,64
+Russia,RUS,1966,44
+Russia,RUS,1967,66
+Russia,RUS,1968,74
+Russia,RUS,1969,70
+Russia,RUS,1970,88
+Russia,RUS,1971,98
+Russia,RUS,1972,88
+Russia,RUS,1973,109
+Russia,RUS,1974,95
+Russia,RUS,1975,111
+Russia,RUS,1976,121
+Russia,RUS,1977,104
+Russia,RUS,1978,119
+Russia,RUS,1979,101
+Russia,RUS,1980,110
+Russia,RUS,1981,124
+Russia,RUS,1982,119
+Russia,RUS,1983,116
+Russia,RUS,1984,115
+Russia,RUS,1985,119
+Russia,RUS,1986,114
+Russia,RUS,1987,116
+Russia,RUS,1988,109
+Russia,RUS,1989,99
+Russia,RUS,1990,96
+Russia,RUS,1991,83
+Russia,RUS,1992,78
+Russia,RUS,1993,59
+Russia,RUS,1994,64
+Russia,RUS,1995,36
+Russia,RUS,1996,28
+Russia,RUS,1997,28
+Russia,RUS,1998,27
+Russia,RUS,1999,15
+Russia,RUS,2000,23
+Russia,RUS,2001,30
+Russia,RUS,2002,19
+Russia,RUS,2003,22
+Russia,RUS,2004,19
+Russia,RUS,2005,19
+Russia,RUS,2006,16
+Russia,RUS,2007,18
+Russia,RUS,2008,21
+Russia,RUS,2009,30
+Russia,RUS,2010,24
+Russia,RUS,2011,24
+Russia,RUS,2012,23
+Russia,RUS,2013,29
+Russia,RUS,2014,35
+Russia,RUS,2015,27
+Russia,RUS,2016,14
+Russia,RUS,2017,25
+Russia,RUS,2018,23
+Russia,RUS,2019,30
+Russia,RUS,2020,24
+Russia,RUS,2021,21
+Russia,RUS,2022,50
+Russia,RUS,2023,66
+Russia,RUS,2024,98
+United States,USA,1958,7
+United States,USA,1959,11
+United States,USA,1960,17
+United States,USA,1961,31
+United States,USA,1962,55
+United States,USA,1963,54
+United States,USA,1964,71
+United States,USA,1965,94
+United States,USA,1966,99
+United States,USA,1967,85
+United States,USA,1968,61
+United States,USA,1969,62
+United States,USA,1970,31
+United States,USA,1971,46
+United States,USA,1972,37
+United States,USA,1973,28
+United States,USA,1974,19
+United States,USA,1975,30
+United States,USA,1976,26
+United States,USA,1977,24
+United States,USA,1978,35
+United States,USA,1979,19
+United States,USA,1980,16
+United States,USA,1981,20
+United States,USA,1982,20
+United States,USA,1983,26
+United States,USA,1984,31
+United States,USA,1985,30
+United States,USA,1986,11
+United States,USA,1987,10
+United States,USA,1988,19
+United States,USA,1989,25
+United States,USA,1990,44
+United States,USA,1991,32
+United States,USA,1992,28
+United States,USA,1993,31
+United States,USA,1994,35
+United States,USA,1995,40
+United States,USA,1996,41
+United States,USA,1997,88
+United States,USA,1998,91
+United States,USA,1999,80
+United States,USA,2000,56
+United States,USA,2001,34
+United States,USA,2002,33
+United States,USA,2003,28
+United States,USA,2004,21
+United States,USA,2005,21
+United States,USA,2006,36
+United States,USA,2007,46
+United States,USA,2008,24
+United States,USA,2009,38
+United States,USA,2010,36
+United States,USA,2011,29
+United States,USA,2012,33
+United States,USA,2013,80
+United States,USA,2014,95
+United States,USA,2015,104
+United States,USA,2016,105
+United States,USA,2017,286
+United States,USA,2018,190
+United States,USA,2019,362
+United States,USA,2020,984
+United States,USA,2021,1232
+United States,USA,2022,1939
+United States,USA,2023,2234
+United States,USA,2024,2263

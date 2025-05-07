@@ -12,8 +12,30 @@
 <body>
     <!-- hero page -->
     <section class="hero">
-        <h1>Space Debris</h1>
-        <h2>Above Us Only Junk</h2>
+        <h1>Space Launch & Debris</h1>
+        <h2>How many are we launching?   Who's to blame?</h2>
+        <h3>Explored with curiousity, from Fred & Kal</h3>
+    </section>
+
+    <!-- Introduction -->
+    <section class="sub_information">
+        <h3>Space launches and debris is a growing problem</h3>
+        <p>As the frequency of space launches continues to rise, the accumulation of artificial objects and orbital debris has become increasingly significant. This growing presence of debris poses substantial risks to operational satellites, spacecraft, and the International Space Station. Additionally, it interferes with astrophotography by obstructing clear views of the night sky.</p>
+        <div class="two-image-display">
+            
+            <div class="image-block">
+                <h4>Astrophotography in Arizona</h4>
+                <img src="./Images/third.jpg" alt="Space Debris" height="300px">
+                <p>Starlink tracks as seen through a telescope in Arizona. Victoria Girgis/Lowell Observato</p>
+            </div>
+            
+            <div class="image-block">
+                <h4>Astrophotography in Czech Republic</h4>
+                <img src="./Images/second.jpg" alt="Space Debris" height="300px">
+                <p>Zdenek Bardon captured Starlink satellite trails while imaging Comet C2019/Y4 (ATLAS) from Rasošky, Czech Republic.</p>
+            </div>
+        </div>
+        <p>The lines visible in the images above are traces left by satellites traversing the night sky, an observation that initially captured our curiosity. This prompted an exploration into the increasing volume of satellite activity and its broader implications for society and the environment.</p>
     </section>
 
     <!-- Space race begins -->
@@ -21,7 +43,7 @@
         <h3>When the space race began</h3>
         <p>it was a symbol of ambition, discovery, and awe, a rare achievement shared by few. Few could have imagined that by 2023, humanity would be launching more rockets into orbit than ever before.</p>
         <div id="chart"></div>
-    </section> 
+    </section>
 
     <!-- Fred updating -->
     <section class="information">
@@ -29,6 +51,22 @@
         <p>The annual number of launches per year sky-rocketed in the mid-2010s as billionaire-backed companies like SpaceX and Blue Oritin develop re-usable rockets with cheaper cost and higher launch frequency.</p>
         <div id="line-chart"></div>    
     </section>
+
+    <section class="information">
+        <h3>Number of Yearly Launches by the Top Three Countries</h3>
+        <p>Recent years have seen a sharp increase in annual space launches from the USA, largely driven by the high launch frequency of SpaceX that dwarfs the competition. While it would be reductive to attribute the rise in orbital debris solely to SpaceX, the scale of its launch activity underscores the need to consider its role within the broader context of space congestion and orbital sustainability.</p>
+        <div id="ridge-plot"></div>
+    </section>
+
+    <section class="information">
+        <h3>Zooming in on USA...or SpaceX</h3>
+        <p>Space launches within the United States are predominantly carried out by SpaceX, which accounts for approximately 95% of the nation's total launch activity.</p>
+        <div id="spacex-stacked-wrapper">
+          <div id="spacex-stacked-chart"></div>
+        </div>
+    </section>
+      
+      
 
     <!-- Consequences -->
     <section class="information">
@@ -117,9 +155,16 @@
 
     <!-- Second chart animation -->
     <script src="chart2.js"></script>
-
+    
     <!-- Fred Chart 1 -->
     <script type="module" src="line-chart.js"></script>
+
+    <!-- Fred Chart 2 -->
+    <script type="module" src="ridge-plot.js"></script>
+
+    
+    <script type="module" src="spacex-stacked-chart.js"></script>
+
 
     <!-- Tableau import -->
     <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"> </script>

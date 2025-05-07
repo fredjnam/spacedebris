@@ -45,7 +45,27 @@ p {
     font-family: 'Lato';
 }
 
-.information {
+.hero h3 {
+    font-size: 1.4rem;
+    font-family: 'Lato';
+}
+
+#spacex-stacked-wrapper {
+    transform-origin: bottom center;
+    width: 100%;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+  
+  /* Reveal with stretched "genie" effect */
+#spacex-stacked-wrapper.genie-in {
+    width: 100%;
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.sub_information {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -58,6 +78,37 @@ p {
 
     /* breating room for the next block of information */
     margin-bottom: 40px;
+}
+
+.sub_information h3 {
+    display: inline-block;
+    margin-bottom: 0px;
+    text-transform: capitalize;
+    font-size: 2rem;
+    
+}
+
+.sub_information p {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-size: 1.7rem;
+    font-family: "lato";
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /* allows the section to stretch with the content */
+    height: auto;
+    
+    /* places a gap between the subtitle and the paragraph */
+    gap: .8rem; 
+
+    /* breating room for the next block of information */
+    margin-bottom: 50px;
 }
 
 .information h3 {
@@ -81,10 +132,31 @@ p {
     overflow: visible;
 }
 
+.information #ridge-plot {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    overflow: visible;
+}
+
+.information #spacex-stacked-chart {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    width: 100%;}
+
 .information #chart2 {
     width: 100%;
     overflow: visible;
 }
+
+.two-image-display {
+    display: flex;
+    justify-content: space-around; 
+    align-items: flex-start;     
+    
+    /* this keeps the flex even within the information section */
+    width: 100%;
+  }
 
 
 
@@ -159,3 +231,5 @@ p {
     width: 100%;
 
 }
+
+  
