@@ -77,7 +77,7 @@ p {
     gap: .8rem; 
 
     /* breating room for the next block of information */
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .sub_information h3 {
@@ -91,7 +91,7 @@ p {
 .sub_information p {
     display: block;
     margin-top: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-size: 1.7rem;
     font-family: "lato";
 }
@@ -108,7 +108,7 @@ p {
     gap: .8rem; 
 
     /* breating room for the next block of information */
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .information h3 {
