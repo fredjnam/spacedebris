@@ -157,6 +157,12 @@ p {
     overflow: visible;
 }
 
+.highlight-number {
+    font-weight: bold;
+    font-size: 4rem; /* or larger if you want it more dramatic */
+    color: #ffd700;  /* optional: gold color for emphasis */
+}
+
 .two-image-display {
     display: flex;
     justify-content: space-around; 
@@ -199,6 +205,27 @@ p {
     height: 350px;   
   }
   
+  .chart-image-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  #launch-pie-chart {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .launch-side-image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  
   .image-block p {
     font-size: 1rem;
     text-align: left;
@@ -214,7 +241,6 @@ p {
     font-size: 2rem;                  /* how big the text is */
     font-weight: bold;                /* normal, bold, 300, 900, etc. */
     color: orange;                    /* any CSS color you want */
-    /* optionally: text-shadow, letter-spacing, line-height… */
     align-self: center;
   }
 

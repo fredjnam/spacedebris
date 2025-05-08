@@ -51,21 +51,6 @@
         <p>The annual number of launches per year sky-rocketed in the mid-2010s as billionaire-backed companies like SpaceX and Blue Oritin develop re-usable rockets with cheaper cost and higher launch frequency.</p>
         <div id="line-chart"></div>    
     </section>
-
-    <section class="information">
-        <h3>Number of Yearly Launches by the Top Three Countries</h3>
-        <p>Recent years have seen a sharp increase in annual space launches from the USA, largely driven by the high launch frequency of SpaceX that dwarfs the competition. While it would be reductive to attribute the rise in orbital debris solely to SpaceX, the scale of its launch activity underscores the need to consider its role within the broader context of space congestion and orbital sustainability.</p>
-        <div id="ridge-plot"></div>
-    </section>
-
-    <section class="information">
-        <h3>Zooming in on USA...or SpaceX</h3>
-        <p>Space launches within the United States are predominantly carried out by SpaceX, which accounts for approximately 95% of the nation's total launch activity.</p>
-        <div id="spacex-stacked-wrapper">
-          <div id="spacex-stacked-chart"></div>
-        </div>
-    </section>
-      
       
 
     <!-- Consequences -->
@@ -138,12 +123,36 @@
         </tableau-viz>
     </section>
 
+    <section class="information">
+        <h3>Number of Yearly Launches by the Top Three Countries</h3>
+        <p>Recent years have seen a sharp increase in annual space launches from the USA, largely driven by the high launch frequency of SpaceX that dwarfs the competition. While it would be reductive to attribute the rise in orbital debris solely to SpaceX, the scale of its launch activity underscores the need to consider its role within the broader context of space congestion and orbital sustainability.</p>
+        <div id="ridge-plot"></div>
+    </section>
+
+    <section class="information">
+        <h3>Zooming in on USA...or SpaceX</h3>
+        <p>Space launches within the United States are predominantly carried out by SpaceX, which accounts for approximately <span class="highlight-number">95%</span> of the nation's total launch activity in 2024.</p>
+        <div id="spacex-stacked-wrapper">
+          <div id="spacex-stacked-chart"></div>
+        </div>
+    </section>
+    
     <!-- Place Holder -->
     <section class="information">
         <h3>Major Space Debris Causing Incidents</h3>
         <p>Space debris didn't get this bad gradually. Major incidents scattered debris by the thousands in just mere moments.</p>
     </section>
 
+    <section class="information">
+        <h3>Planned Launches In 2025 (By Country)</h3>
+        <p>Out of 82 projected launches, the USA accounts for over half, followed by China and other nations.</p>
+      
+        <div class="chart-image-wrapper">
+          <div id="launch-pie-chart"></div>
+          <img src="./Images/ground.png" alt="Launch Chart Info" class="launch-side-image">
+        </div>
+    </section>
+      
 
     <!-- D3 -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -166,6 +175,7 @@
     
     <script type="module" src="spacex-stacked-chart.js"></script>
 
+    <script type="module" src="launch-pie-chart.js"></script>
 
     <!-- Tableau import -->
     <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"> </script>

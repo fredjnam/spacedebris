@@ -74,7 +74,7 @@ function drawRidgePlot() {
 
     group.append("text")
       .attr("x", -10)
-      .attr("y", 10)
+      .attr("y", 150)
       .attr("text-anchor", "end")
       .attr("fill", "white")
       .attr("font-weight", "bold")
@@ -90,7 +90,7 @@ function drawRidgePlot() {
     .attr("x", width / 2)
     .attr("y", -30)
     .attr("text-anchor", "middle")
-    .attr("font-size", "50px")
+    .attr("font-size", "40px")
     .attr("font-weight", "bold")
     .attr("fill", "white")
     .text("Ridge Plot of Annual Launches of Top 3 Countries");
