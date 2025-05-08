@@ -16,7 +16,7 @@ d3.csv("spacex_estimated_launches.csv").then(data => {
   const stackedData = stack(data);
 
   // Set dimensions
-  const margin = { top: 60, right: 180, bottom: 40, left: 60 };
+  const margin = { top: 60, right: 280, bottom: 40, left: 60 };
   const width = 960 - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
 
@@ -82,7 +82,7 @@ d3.csv("spacex_estimated_launches.csv").then(data => {
     .attr("fill", "white")
     .attr("font-size", "1.2rem")
     .attr("font-weight", "bold")
-    .text("Rocket Configurations Used by SpaceX (Estimated)");
+    .text("Rocket Configurations Used by SpaceX");
 
   // Legend
   const legend = svg.append("g")
