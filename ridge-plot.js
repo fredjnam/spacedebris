@@ -29,7 +29,7 @@ function drawRidgePlot() {
   container.selectAll('*').remove();
 
   const margin = { top: 90, right: 30, bottom: 30, left: 300 };
-  const width = 1960 - margin.left - margin.right;
+  const width = 960 - margin.left - margin.right;
   const height = 500;
   const rowHeight = height / topCountries.length;
 
