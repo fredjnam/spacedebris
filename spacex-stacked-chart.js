@@ -16,7 +16,7 @@ d3.csv("spacex_estimated_launches.csv").then(data => {
   const stackedData = stack(data);
 
   // Set dimensions
-  const margin = { top: 60, right: 100, bottom: 40, left: 60 };
+  const margin = { top: 60, right: 200, bottom: 40, left: 60 };
   const width = 760 - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
 
