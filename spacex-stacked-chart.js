@@ -2,25 +2,32 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 const containerId = "spacex-stacked-chart";
 
-d3.csv("spacex_estimated_launches.csv").then(data => {
-  const keys = data.columns.slice(1); // skip "Year"
+Promise.all([
+  d3.csv("spacex_estimated_launches.csv"),
+  d3.csv("spacex_ratio.csv")
+]).then(([barData, lineData]) => {
+  const keys = barData.columns.slice(1); // Skip Year column
 
-  // Convert all values to numbers
-  data.forEach(d => {
+  // Clean and convert
+  barData.forEach(d => {
     d.Year = +d.Year;
     keys.forEach(k => d[k] = +d[k]);
   });
 
-  // Stack data
-  const stack = d3.stack().keys(keys);
-  const stackedData = stack(data);
+  lineData.forEach(d => {
+    d.Year = +d.Year;
+    d.Ratio = +d["SpaceX Ratio"];
+  });
 
-  // Set dimensions
+  const ratioMap = new Map(lineData.map(d => [d.Year, d.Ratio]));
+
+  const stack = d3.stack().keys(keys);
+  const stackedData = stack(barData);
+
   const margin = { top: 60, right: 200, bottom: 40, left: 60 };
-  const width = 760 - margin.left - margin.right;
+  const width = 720 - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
 
-  // Create SVG container
   const svg = d3.select(`#${containerId}`)
     .append("svg")
     .attr("width", "100%")
@@ -29,31 +36,25 @@ d3.csv("spacex_estimated_launches.csv").then(data => {
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  // X and Y scales
+  const years = barData.map(d => d.Year);
   const x = d3.scaleBand()
-    .domain(data.map(d => d.Year))
+    .domain(years)
     .range([0, width])
     .padding(0.2);
 
-  const y = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d3.sum(keys, k => d[k]))])
+  const yLeft = d3.scaleLinear()
+    .domain([0, d3.max(barData, d => d3.sum(keys, k => d[k]))])
     .nice()
     .range([height, 0]);
 
-  // Color scale
+  const yRight = d3.scaleLinear()
+    .domain([0, 100])
+    .range([height, 0]);
+
   const color = d3.scaleOrdinal()
     .domain(keys)
-    .range([
-      "#b0c4de", // Falcon 9 v1.0
-      "#4169e1", // Falcon 9 v1.1
-      "#0000cd", // Falcon 9 Full Thrust
-      "#6495ed", // Falcon 9 FT (reused)
-      "#2e8b57", // Falcon 9 Block 5
-      "#66cdaa", // Falcon 9 Block 5 (reused)
-      "#ffd700"  // Falcon Heavy
-    ]);
+    .range(["#b0c4de", "#4169e1", "#0000cd", "#6495ed", "#2e8b57", "#66cdaa", "#ffd700"]);
 
-  // Draw stacked bars
   svg.selectAll("g.layer")
     .data(stackedData)
     .join("g")
@@ -62,19 +63,70 @@ d3.csv("spacex_estimated_launches.csv").then(data => {
     .data(d => d)
     .join("rect")
     .attr("x", d => x(d.data.Year))
-    .attr("y", d => y(d[1]))
-    .attr("height", d => y(d[0]) - y(d[1]))
+    .attr("y", d => yLeft(d[1]))
+    .attr("height", d => yLeft(d[0]) - yLeft(d[1]))
     .attr("width", x.bandwidth());
 
-  // X-axis
   svg.append("g")
     .attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-  // Y-axis
-  svg.append("g").call(d3.axisLeft(y));
+  svg.append("g").call(d3.axisLeft(yLeft));
 
-  // Title
+  svg.append("g")
+    .attr("transform", `translate(${width},0)`)
+    .call(d3.axisRight(yRight));
+
+  const filteredLineData = lineData.filter(d => years.includes(d.Year));
+
+  // Define gradient
+  const defs = svg.append("defs");
+  const gradient = defs.append("linearGradient")
+    .attr("id", "ratioGradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "0%")
+    .attr("y2", "100%");
+
+  gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "orange")
+    .attr("stop-opacity", 0.3);
+
+  gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "orange")
+    .attr("stop-opacity", 0);
+
+  const area = d3.area()
+    .x(d => x(d.Year) + x.bandwidth() / 2)
+    .y0(yRight(0))
+    .y1(d => yRight(d.Ratio))
+    .curve(d3.curveMonotoneX);
+
+  svg.append("path")
+    .datum(filteredLineData)
+    .attr("fill", "url(#ratioGradient)")
+    .attr("d", area);
+
+  svg.append("path")
+    .datum(filteredLineData)
+    .attr("fill", "none")
+    .attr("stroke", "orange")
+    .attr("stroke-width", 2)
+    .attr("d", d3.line()
+      .x(d => x(d.Year) + x.bandwidth() / 2)
+      .y(d => yRight(d.Ratio))
+      .curve(d3.curveMonotoneX));
+
+  svg.selectAll("circle")
+    .data(filteredLineData)
+    .join("circle")
+    .attr("cx", d => x(d.Year) + x.bandwidth() / 2)
+    .attr("cy", d => yRight(d.Ratio))
+    .attr("r", 3)
+    .attr("fill", "orange");
+
   svg.append("text")
     .attr("x", width / 2)
     .attr("y", -20)
@@ -82,27 +134,30 @@ d3.csv("spacex_estimated_launches.csv").then(data => {
     .attr("fill", "white")
     .attr("font-size", "1.2rem")
     .attr("font-weight", "bold")
-    .text("Rocket Configurations Used by SpaceX");
+    .text("Rocket Configurations and SpaceX Launch Share");
 
-  // Legend
-  const legend = svg.append("g")
-    .attr("transform", `translate(${width + 20}, 0)`);
-
+  const legend = svg.append("g").attr("transform", `translate(${width + 20}, 0)`);
   keys.forEach((key, i) => {
     const g = legend.append("g").attr("transform", `translate(0, ${i * 20})`);
-    g.append("rect")
-      .attr("width", 16)
-      .attr("height", 16)
-      .attr("fill", color(key));
-    g.append("text")
-      .attr("x", 20)
-      .attr("y", 12)
-      .text(key)
-      .style("font-size", "0.8rem")
-      .attr("fill", "white");
+    g.append("rect").attr("width", 16).attr("height", 16).attr("fill", color(key));
+    g.append("text").attr("x", 20).attr("y", 12).text(key).style("font-size", "0.8rem").attr("fill", "white");
   });
+
+  legend.append("circle")
+    .attr("cx", 8)
+    .attr("cy", keys.length * 20 + 8)
+    .attr("r", 6)
+    .attr("fill", "orange");
+
+  legend.append("text")
+    .attr("x", 20)
+    .attr("y", keys.length * 20 + 12)
+    .text("SpaceX Share (%)")
+    .style("font-size", "0.8rem")
+    .attr("fill", "white");
+
 }).catch(error => {
-  console.error("❌ Error loading CSV:", error);
+  console.error("❌ Error loading CSVs:", error);
 });
 
 const wrapper = document.getElementById("spacex-stacked-wrapper");
@@ -114,5 +169,3 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 
 observer.observe(wrapper);
-
-  
