@@ -289,4 +289,23 @@ const legendData = [
   }, { threshold: 0.5 });
 
   observer.observe(document.querySelector("#chart2"));
+
+  // —— REPLAY BUTTON HANDLER —— 
+d3.select("#replay-btn").on("click", () => {
+  // 1) reset the y-axis back to its original domain
+  y.domain([0, d3.max(redData, d => d.Count)]);
+  svg.select(".y-axis").call(d3.axisLeft(y));
+  svg.select(".grid")
+     .call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
+     .selectAll("line").attr("stroke", "#eeeeee");
+
+  // 2) reset the orange line’s dash offset
+  orangePath
+    .interrupt()                    // stop any in-flight transitions
+    .attr("stroke-dashoffset", totalLen);
+
+  // 3) replay the animation
+  animateOrange();
+});
+  
 });

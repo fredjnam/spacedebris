@@ -340,4 +340,18 @@ p {
 
 }
 
-  
+#replay-btn {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffd700;
+    color: black;
+    border-color: white;
+    font-weight: 500;
+    align-items: center;
+    margin-left: 45%;
+}
+
+#replay-btn:hover {
+    cursor: pointer;
+    background-color: #cacaca;
+}

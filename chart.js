@@ -183,7 +183,19 @@ obs.disconnect();         // only run once
 }
 }, { threshold: 0.9 });      // trigger when 20% visible
 
-observer.observe(chartEl);
+  observer.observe(chartEl);
+  
+   // —— REPLAY BUTTON ——  
+   d3.select("#replay-btn").on("click", () => {
+    // 1) stop any current transition
+    path.interrupt();
+
+    // 2) snap back to hidden state
+    path.attr("stroke-dashoffset", totalLength);
+
+    // 3) play it again
+    animate(path, totalLength);
+  });
 
 // optional: if you want to redraw on resize (and re‑observe)
 window.addEventListener("resize", () => {
