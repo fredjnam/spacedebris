@@ -24,9 +24,9 @@ Promise.all([
   const stack = d3.stack().keys(keys);
   const stackedData = stack(barData);
 
-  const margin = { top: 60, right: 200, bottom: 40, left: 60 };
+  const margin = { top: 60, right: 180, bottom: 40, left: 60 };
   const width = 720 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const height = 300 - margin.top - margin.bottom;
 
   const svg = d3.select(`#${containerId}`)
     .append("svg")
@@ -72,6 +72,33 @@ Promise.all([
     .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
   svg.append("g").call(d3.axisLeft(yLeft));
+
+  // X-axis label
+svg.append("text")
+  .attr("class", "axis-label")
+  .attr("x", width / 2)
+  .attr("y", height + 35)
+  .attr("text-anchor", "middle")
+  .text("Year");
+
+// Left Y-axis label (stacked bar totals)
+svg.append("text")
+  .attr("class", "axis-label")
+  .attr("transform", "rotate(-90)")
+  .attr("x", -height / 2)
+  .attr("y", -30)
+  .attr("text-anchor", "middle")
+  .text("Number of Launches");
+
+// Right Y-axis label (SpaceX %)
+svg.append("text")
+  .attr("class", "axis-label")
+  .attr("transform", "rotate(-90)")
+  .attr("x", -height / 2)
+  .attr("y", width + 40)
+  .attr("text-anchor", "middle")
+  .text("SpaceX Share (%)");
+
 
   svg.append("g")
     .attr("transform", `translate(${width},0)`)
@@ -136,7 +163,7 @@ Promise.all([
     .attr("font-weight", "bold")
     .text("Rocket Configurations and SpaceX Launch Share");
 
-  const legend = svg.append("g").attr("transform", `translate(${width + 20}, 0)`);
+  const legend = svg.append("g").attr("transform", `translate(${width + 55}, 0)`);
   keys.forEach((key, i) => {
     const g = legend.append("g").attr("transform", `translate(0, ${i * 20})`);
     g.append("rect").attr("width", 16).attr("height", 16).attr("fill", color(key));

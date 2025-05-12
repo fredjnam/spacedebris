@@ -64,6 +64,12 @@ p {
     opacity: 1;
 }
 
+.axis-label { 
+  font-size: .8rem; 
+  fill: orange; 
+}
+
+
 .sub_information {
     display: flex;
     flex-direction: column;
