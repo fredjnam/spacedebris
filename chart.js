@@ -1,5 +1,5 @@
+//hard code chart data so that it is durable across platforms. 
 function drawChart() {
-
 const data = [
     { Year: 1957, Count: 3 },
     { Year: 1958, Count: 28 },
@@ -71,16 +71,18 @@ const data = [
     { Year: 2024, Count: 263},
 ];
     
-  const margin = { top: 40, right: 60, bottom: 60, left: 80 },
-  width  = 1000 - margin.left - margin.right,
-  height = 400  - margin.top  - margin.bottom;
+//canvas size
+const margin = { top: 40, right: 60, bottom: 60, left: 80 },
+width  = 1000 - margin.left - margin.right,
+height = 400  - margin.top  - margin.bottom;
 
 const outerWidth  = width  + margin.left + margin.right;
 const outerHeight = height + margin.top  + margin.bottom;
 
-// Clear any existing SVG
+//clear svg before drawing
 d3.select("#chart").selectAll("*").remove();
 
+//draw canvas
 const svg = d3.select("#chart")
 .append("svg")
 .attr("viewBox", `0 0 ${outerWidth} ${outerHeight}`)
@@ -88,27 +90,27 @@ const svg = d3.select("#chart")
 .append("g")
 .attr("transform", `translate(${margin.left},${margin.top})`);
 
-// Scales, axes, labels, grid … exactly as you have them
+//scales axis and labels
 const x = d3.scaleLinear().domain(d3.extent(data, d=>d.Year)).range([0,width]);
 const y = d3.scaleLinear().domain([0, d3.max(data, d=>d.Count)]).nice().range([height,0]);
+svg.append("g")
+  
+.attr("transform", `translate(0,${height})`)
+.call(d3.axisBottom(x).tickFormat(d3.format("d")));
+svg.append("text");
+svg.append("g").call(d3.axisLeft(y));
+svg.append("text");
+svg.append("text");
+svg.append("g")
+  
+.call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
+.selectAll("line").attr("stroke", "#eeeeee");
 
 svg.append("g")
 .attr("transform", `translate(0,${height})`)
 .call(d3.axisBottom(x).tickFormat(d3.format("d")));
-svg.append("text")  /* X‑axis label */ /* … */;
-svg.append("g").call(d3.axisLeft(y));
-svg.append("text")  /* Y‑axis label */ /* … */;
-svg.append("text")  /* Title */          /* … */;
-svg.append("g")
-.call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
-.selectAll("line").attr("stroke", "#eeeeee");
 
-     // 1) X axis
-  svg.append("g")
-  .attr("transform", `translate(0,${height})`)
-  .call(d3.axisBottom(x).tickFormat(d3.format("d")));
-
-// 1a) X‑axis label
+//x axis label
 svg.append("text")
   .attr("class", "axis-label")
   .attr("text-anchor", "middle")
