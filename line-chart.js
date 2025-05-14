@@ -1,13 +1,9 @@
-// line-chart.js
-// D3 module: render and scroll‑triggered animate launches by country line chart with stroke‑dash reveal
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 const containerId = "line-chart";
 let launchSeries = [];
 let selectedCountries = [];
 
-// Load CSV and initialize
-// CSV columns: Year, Entity, Annual number of objects launched into outer space
 d3.csv("all_launches_ever.csv").then(rawData => {
   launchSeries = rawData.map(d => ({
     year:     +d.Year,
@@ -15,7 +11,6 @@ d3.csv("all_launches_ever.csv").then(rawData => {
     launches: +d["Annual number of objects launched into outer space"]
   }));
 
-  // Compute top 10 countries by total launches
   const totals = d3.rollups(
     launchSeries,
     v => d3.sum(v, d => d.launches),
@@ -30,14 +25,13 @@ function drawChart() {
   const container = d3.select(`#${containerId}`);
   container.selectAll('*').remove();
 
-  // Dimensions
+  //dimensions of the graph
   const totalWidth = 2000;
   const totalHeight = 600;
   const margin = { top: 40, right: 60, bottom: 60, left: 80 };
   const width  = totalWidth  - margin.left - margin.right;
   const height = totalHeight - margin.top  - margin.bottom;
 
-  // Create SVG
   const svg = container.append('svg')
     .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
     .attr('preserveAspectRatio', 'xMinYMin meet')
@@ -46,7 +40,6 @@ function drawChart() {
     .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
-  // Scales
   const x = d3.scaleLinear()
     .domain(d3.extent(launchSeries, d => d.year))
     .range([0, width]);
@@ -60,7 +53,6 @@ function drawChart() {
     .domain(selectedCountries)
     .range(d3.schemeTableau10);
 
-  // X-axis
   svg.append('g')
     .attr('transform', `translate(0,${height})`)
     .call(d3.axisBottom(x).tickFormat(d3.format('d')))
@@ -71,7 +63,6 @@ function drawChart() {
       .attr('text-anchor', 'middle')
       .text('Year');
 
-  // Y-axis + gridlines
   svg.append('g')
     .call(d3.axisLeft(y))
     .append('text')
@@ -88,7 +79,6 @@ function drawChart() {
       .attr('stroke', '#fff')
       .attr('stroke-opacity', 0.3);
 
-  // Draw lines with initial stroke-dash
   const paths = selectedCountries.map(country => {
     const data = launchSeries
       .filter(d => d.country === country)
@@ -109,7 +99,6 @@ function drawChart() {
     return path;
   });
 
-  // Legend
   const legend = svg.append('g')
     .attr('transform', `translate(${width - 200}, 10)`);
   selectedCountries.forEach((country, i) => {
@@ -118,7 +107,6 @@ function drawChart() {
     g.append('text').attr('x', 20).attr('y', 12).attr('fill', 'white').text(country);
   });
 
-  // Scroll-triggered stroke-dash animation
   const observer = new IntersectionObserver((entries, obs) => {
     if (entries[0].isIntersecting) {
       paths.forEach(path => {

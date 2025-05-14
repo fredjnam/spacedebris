@@ -6,9 +6,8 @@ Promise.all([
   d3.csv("spacex_estimated_launches.csv"),
   d3.csv("spacex_ratio.csv")
 ]).then(([barData, lineData]) => {
-  const keys = barData.columns.slice(1); // Skip Year column
+  const keys = barData.columns.slice(1); //need to skip year column
 
-  // Clean and convert
   barData.forEach(d => {
     d.Year = +d.Year;
     keys.forEach(k => d[k] = +d[k]);
@@ -73,7 +72,6 @@ Promise.all([
 
   svg.append("g").call(d3.axisLeft(yLeft));
 
-  // X-axis label
 svg.append("text")
   .attr("class", "axis-label")
   .attr("x", width / 2)
@@ -81,7 +79,6 @@ svg.append("text")
   .attr("text-anchor", "middle")
   .text("Year");
 
-// Left Y-axis label (stacked bar totals)
 svg.append("text")
   .attr("class", "axis-label")
   .attr("transform", "rotate(-90)")
@@ -90,7 +87,6 @@ svg.append("text")
   .attr("text-anchor", "middle")
   .text("Number of Launches");
 
-// Right Y-axis label (SpaceX %)
 svg.append("text")
   .attr("class", "axis-label")
   .attr("transform", "rotate(-90)")
@@ -106,7 +102,6 @@ svg.append("text")
 
   const filteredLineData = lineData.filter(d => years.includes(d.Year));
 
-  // Define gradient
   const defs = svg.append("defs");
   const gradient = defs.append("linearGradient")
     .attr("id", "ratioGradient")
@@ -184,7 +179,7 @@ svg.append("text")
     .attr("fill", "white");
 
 }).catch(error => {
-  console.error("❌ Error loading CSVs:", error);
+  console.error("Error loading CSVs:", error);
 });
 
 const wrapper = document.getElementById("spacex-stacked-wrapper");

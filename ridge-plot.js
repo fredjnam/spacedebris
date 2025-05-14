@@ -5,14 +5,13 @@ let launchSeries = [];
 let topCountries = [];
 
 d3.csv("topthree.csv").then(rawData => {
-  // Parse using correct column names
+  //parsing
   launchSeries = rawData.map(d => ({
     year: +d.Year,
     country: d.Entity,
     launches: +d["Annual number of objects launched into outer space"]
   }));
 
-  // Derive top 3 countries by total launches
   const totals = d3.rollups(
     launchSeries,
     v => d3.sum(v, d => d.launches),
