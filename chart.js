@@ -75,97 +75,107 @@ const data = [
 const margin = { top: 40, right: 60, bottom: 60, left: 80 },
 width  = 1000 - margin.left - margin.right,
 height = 400  - margin.top  - margin.bottom;
-
 const outerWidth  = width  + margin.left + margin.right;
 const outerHeight = height + margin.top  + margin.bottom;
-
-//clear svg before drawing
-d3.select("#chart").selectAll("*").remove();
 
 //draw canvas
 const svg = d3.select("#chart")
 .append("svg")
-.attr("viewBox", `0 0 ${outerWidth} ${outerHeight}`)
-.attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", `0 0 ${outerWidth} ${outerHeight}`)
+  .attr("preserveAspectRatio", "xMinYMin meet")
 .append("g")
-.attr("transform", `translate(${margin.left},${margin.top})`);
+  .attr("transform", `translate(${margin.left},${margin.top})`);
 
-//scales axis and labels
-const x = d3.scaleLinear().domain(d3.extent(data, d=>d.Year)).range([0,width]);
-const y = d3.scaleLinear().domain([0, d3.max(data, d=>d.Count)]).nice().range([height,0]);
-svg.append("g")
+//scales for x
+const x = d3.scaleLinear()
+  //Take years and make them positions on the x axis
+  .domain(d3.extent(data, d => d.Year))
+  .range([0, width]); //origin
+
+//scales for y
+const y = d3.scaleLinear()
+  .domain([0, d3.max(data, d => d.Count)])
+  .nice()
+  .range([height, 0]); //origin
   
+//setting a place for an x axis  
+svg.append("g")
+  .attr("transform", `translate(0,${height})`)
+  .call(
+    d3.axisBottom(x)
+      .tickFormat(d3
+        .format("d"))
+  );
+  
+//setting a place for the y axis and gridlines
+svg.append("g")
+  .call(
+    d3.axisLeft(y)
+      .tickSize(-width)
+      .tickFormat("")
+  )
+  .selectAll("line").attr("stroke", "#eeeeee"); //style
+  
+svg.append("g")
 .attr("transform", `translate(0,${height})`)
 .call(d3.axisBottom(x).tickFormat(d3.format("d")));
-svg.append("text");
-svg.append("g").call(d3.axisLeft(y));
-svg.append("text");
-svg.append("text");
-svg.append("g")
-  
-.call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
-.selectAll("line").attr("stroke", "#eeeeee");
 
-svg.append("g")
-.attr("transform", `translate(0,${height})`)
-.call(d3.axisBottom(x).tickFormat(d3.format("d")));
-
-//x axis label
+//x axis labels
 svg.append("text")
   .attr("class", "axis-label")
-  .attr("text-anchor", "middle")
   .attr("x", width/2)
-  .attr("y", height + margin.bottom - 10)
-  .attr("fill", "orange")
-  .style("font-size", ".8rem")
+  .attr("y", height + margin.bottom - 10) //place label at the bottom
   .text("Year");
 
-// 2) Y axis
+//setting a location for the y axis
 svg.append("g")
   .call(d3.axisLeft(y));
 
-// 2a) Y‑axis label
+//y axis labels
 svg.append("text")
   .attr("class", "axis-label")
   .attr("text-anchor", "middle")
   .attr("transform", "rotate(-90)")
   .attr("x", -height/2)
   .attr("y", -margin.left + 30)
-  .attr("fill", "orange")
-  .style("font-size", ".8rem")
   .text("Number of Launch Attempts");
 
-// 3) Chart title
+//title
 svg.append("text")
   .attr("class", "chart-title")
   .attr("y", -margin.top/2)
   .attr("text-anchor", "start")
-  .attr("fill", "orange")
-  .style("font-size", "1.1rem")
   .text("Annual Space Launches: 1957–2024");
     
+//setting up the line draing datum format
+const line = d3.line()
+  .x(d => x(d.Year))
+  .y(d => y(d.Count));
 
-const line = d3.line().x(d=>x(d.Year)).y(d=>y(d.Count));
+  
+//draw in the line
 const path = svg.append("path")
-.datum(data)
-.attr("fill", "none")
-.attr("stroke", "red")
-.attr("stroke-width", 3)
-.attr("stroke-linecap", "round")
-.attr("stroke-linejoin", "round")
-.attr("d", line);
+  .datum(data)
+  .attr("fill", "none")
+  .attr("stroke", "red")
+  .attr("stroke-width", 3)
+  .attr("stroke-linecap", "round")
+  .attr("stroke-linejoin", "round")
+  .attr("d", line);
 
-// put into hidden dash‑offset state
+//grabbing the length of the line
 const totalLength = path.node().getTotalLength();
-path
-.attr("stroke-dasharray", `${totalLength} ${totalLength}`)
-.attr("stroke-dashoffset", totalLength);
 
-// return the path selection & length so we can animate it later
+//dash line trick 
+path
+  .attr("stroke-dasharray", `${totalLength} ${totalLength}`)
+  .attr("stroke-dashoffset", totalLength);
+
+//return to use later for animation
 return { path, totalLength };
 }
 
-// 1) Animation routine, but not called immediately
+//animation .transition
 function animate(path, totalLength) {
 path.transition()
 .duration(4000)
@@ -173,36 +183,19 @@ path.transition()
 .attr("stroke-dashoffset", 0);
 }
 
-// 2) Set up draw + observer
+//trigger animation when chart comes into frame
 document.addEventListener("DOMContentLoaded", () => {
 const { path, totalLength } = drawChart();
-
 const chartEl = document.querySelector("#chart");
 const observer = new IntersectionObserver((entries, obs) => {
 if (entries[0].isIntersecting) {
-animate(path, totalLength);
-obs.disconnect();         // only run once
+  animate(path, totalLength);
+//chart only run once
+obs.disconnect();         
 }
-}, { threshold: 0.9 });      // trigger when 20% visible
-
+},
+  //trigger when chart is 90% in view
+  { threshold: 0.9 }); 
   observer.observe(chartEl);
   
-   // —— REPLAY BUTTON ——  
-   d3.select("#replay-btn").on("click", () => {
-    // 1) stop any current transition
-    path.interrupt();
-
-    // 2) snap back to hidden state
-    path.attr("stroke-dashoffset", totalLength);
-
-    // 3) play it again
-    animate(path, totalLength);
-  });
-
-// optional: if you want to redraw on resize (and re‑observe)
-window.addEventListener("resize", () => {
-observer.disconnect();
-const result = drawChart();
-observer.observe(chartEl);
-});
 });

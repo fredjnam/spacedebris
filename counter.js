@@ -1,14 +1,13 @@
-// counter.js
 (function () {
 
   function animateCount(id, start, end, duration) {
     const elem      = document.getElementById(id);
-    const stepTime  = 1000 / 60;                     // ~60fps
+    const stepTime  = 1000 / 60;//fps
     const totalFrames = Math.round(duration / stepTime);
     let   frame     = 0;
 
     const easeOutQuad = t => t < 0.5
-      ? 8 * t * t * t * t      // 8·t⁴
+      ? 8 * t * t * t * t 
       : 1 - 8 * Math.pow(1 - t, 4);
 
     function update() {
@@ -29,14 +28,14 @@
   document.addEventListener("DOMContentLoaded", () => {
     const counterEl = document.getElementById("counter");
 
-    // only start when #counter scrolls into view
+    //interscetion observer to trigger animnation on scroll 
     const observer = new IntersectionObserver((entries, obs) => {
       if (entries[0].isIntersecting) {
         animateCount("counter", 0, 30913, 8000);
         obs.disconnect();  // run only once
       }
     }, {
-      threshold: 0.5  // trigger when half visible; tweak as needed
+      threshold: 0.5  //screen threshold
     });
 
     observer.observe(counterEl);

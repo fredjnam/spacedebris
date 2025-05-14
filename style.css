@@ -242,10 +242,10 @@ p {
   }
 
   #counter {
-    font-family: 'Lato', sans-serif;  /* pick your font */
-    font-size: 2rem;                  /* how big the text is */
-    font-weight: bold;                /* normal, bold, 300, 900, etc. */
-    color: orange;                    /* any CSS color you want */
+    font-family: 'Lato', sans-serif;  
+    font-size: 2rem;                 
+    font-weight: bold;               
+    color: orange;                   
     align-self: center;
   }
 
@@ -254,7 +254,8 @@ p {
     fill: orange; 
 }
 
-.chart-title { font-size: 1.1rem;
+.chart-title { 
+    font-size: 1.1rem;
     fill: orange; 
 }
 
